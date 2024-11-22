@@ -8,12 +8,30 @@ class TechList extends Component{
 
     state = {
         newTech: '',
-        techs: [
-            'Node.js',
-            'ReactJS',
-            'DOTNET!!!'
-        ]
+        techs: []
     }; 
+
+    // executes when the component runs
+    componentDidMount(){
+        const techs = localStorage.getItem('techs');
+
+        if(techs){
+            this.setState({techs: JSON.parse(techs)});
+        }
+    }
+
+    // Executes when props or the state changes 
+    componentDidUpdate(_, prevState){
+        if(prevState.techs != this.state.techs){
+            localStorage.setItem('techs', JSON.stringify(this.state.techs))
+        }
+    }
+
+    // Executes when the component die
+    componentWillUnmount(){
+
+    }
+
     // React states are immutable
 
     handleInputChange = e => {
