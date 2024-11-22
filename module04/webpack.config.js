@@ -14,6 +14,19 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.css/,
+                use: [
+                    { loader: 'style-loader'}, // this basically brings your css code in the HTML code 
+                    { loader: 'css-loader'} // this makes your css code understands other file extensions
+                ]
+            },
+            {
+                test: /.*\.(gif|png|jpe?g)$/i,
+                use: {
+                    loader: 'file-loader'
+                }
             }
         ]
     }
